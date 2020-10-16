@@ -18,8 +18,10 @@ export default {
     const { id } = req.params;
     const orphanagesRepository = getRepository(Orphanage);
 
-    const orphanage = await orphanagesRepository.findOneOrFail(id);
-
+    const orphanage = await orphanagesRepository.findOneOrFail(id, {
+      relations: ["images"],
+    });
+    console.log(orphanage);
     return res.json(orphanageView.render(orphanage));
   },
   async create(req: Request, res: Response) {
