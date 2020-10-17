@@ -7,7 +7,11 @@ import uploadConfig from "./config/upload";
 const routes = Router();
 const upload = multer(uploadConfig);
 
-routes.post("/orphanages", upload.array("images"), OrphanagesController.create);
+routes.post(
+  "/orphanages/create",
+  upload.array("images"),
+  OrphanagesController.create
+);
 
 routes.get("/orphanages/:id", OrphanagesController.show);
 
