@@ -88,8 +88,8 @@ export default function OrphanageDetails() {
             initialRegion={{
               latitude: orphanage.latitude,
               longitude: orphanage.longitude,
-              latitudeDelta: 0.008,
-              longitudeDelta: 0.008,
+              latitudeDelta: 0.1,
+              longitudeDelta: 0.1,
             }}
             zoomEnabled={false}
             pitchEnabled={false}
