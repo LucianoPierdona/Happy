@@ -31,6 +31,23 @@ yarn start
 
 ```
 
+# Usage Back-End
+
+First install the dependencies with
+```
+npm install
+# or
+yarn add
+```
+
+Then run with
+```
+npm run dev
+# or
+yarn dev
+```
+
+
 # Screenshots Web
 
 ![Background](https://github.com/LucianoPierdona/Happy/blob/main/web/public/readme1.png)
