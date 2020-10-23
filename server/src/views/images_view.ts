@@ -1,5 +1,6 @@
 import Image from "../models/Image";
 
+// Image Resolver
 export default {
   render(image: Image) {
     return {

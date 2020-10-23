@@ -1,6 +1,7 @@
 import Orphanage from "../models/Orphanage";
 import imagesView from "./images_view";
 
+// Orphanage Resolver
 export default {
   render(orphanage: Orphanage) {
     return {

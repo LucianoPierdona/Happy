@@ -8,6 +8,7 @@ import "leaflet/dist/leaflet.css";
 import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
 
+// Orphanage Icon Props
 interface Orphanage {
   id: number;
   latitude: number;
@@ -15,11 +16,12 @@ interface Orphanage {
   name: string;
 }
 
+// Orphanages Map Locations
 const OrphanagesMap = () => {
+  // Initial Data
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
 
-  console.log(orphanages);
-
+  // Get all the lists from the database
   useEffect(() => {
     api.get("orphanages").then((res) => {
       setOrphanages(res.data);

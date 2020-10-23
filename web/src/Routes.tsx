@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Orphanage from "./pages/Orphanage";
 import OrphanagesMap from "./pages/OrphanagesMap";
 
+// Routes of the web application
 function Routes() {
   return (
     <BrowserRouter>

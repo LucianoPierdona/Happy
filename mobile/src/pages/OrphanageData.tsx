@@ -15,6 +15,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import * as ImagePicker from "expo-image-picker";
 import api from "../services/api";
 
+// Maps Props
 interface ParamsProps {
   position: {
     latitude: number;
@@ -22,10 +23,14 @@ interface ParamsProps {
   };
 }
 
+// Create Orphanage Details
 export default function OrphanageData() {
+  // Navigation and Params
   const navigation = useNavigation();
   const route = useRoute();
   const params = route.params as ParamsProps;
+
+  // Initial State
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -33,17 +38,9 @@ export default function OrphanageData() {
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<string[]>([]);
 
+  // Create the orphanage and send it to the database
   async function handleCreateOrphanage() {
     const { latitude, longitude } = params.position;
-    console.log({
-      name,
-      about,
-      latitude,
-      longitude,
-      instructions,
-      opening_hours,
-      open_on_weekends,
-    });
 
     const data = new FormData();
 
@@ -68,6 +65,7 @@ export default function OrphanageData() {
     navigation.navigate("OrphanagesMap");
   }
 
+  // Add the selected images to the array
   async function handleSelectImages() {
     const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
     if (status !== "granted") {
@@ -159,6 +157,7 @@ export default function OrphanageData() {
   );
 }
 
+// Styling for the Create Orphanage Details Page.
 const styles = StyleSheet.create({
   container: {
     flex: 1,

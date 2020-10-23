@@ -8,6 +8,7 @@ import { useNavigation, useFocusEffect } from "@react-navigation/native";
 import { RectButton } from "react-native-gesture-handler";
 import api from "../services/api";
 
+// Props for the orphanages map.
 interface OrphanageItem {
   id: number;
   name: string;
@@ -15,19 +16,26 @@ interface OrphanageItem {
   longitude: number;
 }
 
+// Orphanages Map Page
 export default function OrphanagesMap() {
+  // Navigation
   const navigation = useNavigation();
+  // Initial State
   const [orphanages, setOrphanages] = useState<OrphanageItem[]>([]);
 
+  // Take all the orphanages from the database
   useFocusEffect(() => {
     api.get("orphanages").then((response) => {
       setOrphanages(response.data);
     });
   });
 
+  // Navigation to the details of the orphanage
   function handleNavigationToOrphanageDetails(id: number) {
     navigation.navigate("OrphanageDetails", { id });
   }
+
+  // Navigation to Create and Orphanage
   function handleNavigationToCreateOrphanage() {
     navigation.navigate("SelectMapPosition");
   }

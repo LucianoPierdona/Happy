@@ -9,6 +9,7 @@ import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
 import { useParams } from "react-router-dom";
 
+// Props for the Orphanage
 interface Orphanage {
   id: number;
   latitude: number;
@@ -23,22 +24,25 @@ interface Orphanage {
     url: string;
   }>;
 }
-
+// Props for the URL Params
 interface OrphanageParams {
   id: string;
 }
 
 export default function Orphanage() {
+  // Initial Data
   const [orphanage, setOrphanage] = useState<Orphanage>();
   const params = useParams<OrphanageParams>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  // Connection with the database to get all the data from specified ID
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then((res) => {
       setOrphanage(res.data);
     });
   }, [params.id]);
 
+  // Simple loading message
   if (!orphanage) {
     return <p>Carregando</p>;
   }

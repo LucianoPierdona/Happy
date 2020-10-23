@@ -7,15 +7,20 @@ import MapView, { MapEvent, Marker } from "react-native-maps";
 
 import mapMarkerImg from "../images/Logo.png";
 
+// Create Orphanage Map Location
 export default function SelectMapPosition() {
+  // Navigation
   const navigation = useNavigation();
 
+  // Initial Map State
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
+  // On User press, define the position in the map
   function handleUserPress(event: MapEvent) {
     setPosition(event.nativeEvent.coordinate);
   }
 
+  // send the user to create the orphanage details
   function handleNextStep() {
     navigation.navigate("OrphanageData", { position });
   }

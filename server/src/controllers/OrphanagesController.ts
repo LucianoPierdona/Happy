@@ -4,7 +4,9 @@ import Orphanage from "../models/Orphanage";
 import orphanageView from "../views/orphanages_view";
 import * as Yup from "yup";
 
+// Controllers
 export default {
+  // Orphanages
   async index(req: Request, res: Response) {
     const orphanagesRepository = getRepository(Orphanage);
 
@@ -14,6 +16,8 @@ export default {
 
     return res.json(orphanageView.renderMany(orphanages));
   },
+
+  // Show a Specified Orphanage
   async show(req: Request, res: Response) {
     const { id } = req.params;
     const orphanagesRepository = getRepository(Orphanage);
@@ -24,6 +28,8 @@ export default {
     console.log(orphanage);
     return res.json(orphanageView.render(orphanage));
   },
+
+  // Create a Single Orphanage
   async create(req: Request, res: Response) {
     const {
       name,
@@ -36,6 +42,7 @@ export default {
     } = req.body;
     const orphanagesRepository = getRepository(Orphanage);
 
+    // Handle the orphanage image and save
     const requestImages = req.files as Express.Multer.File[];
     const images = requestImages.map((image) => {
       return { path: image.filename };

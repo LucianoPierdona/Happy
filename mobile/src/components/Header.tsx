@@ -4,14 +4,18 @@ import { BorderlessButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
+// header Props
 interface HeaderProps {
   title: string;
   showCancel?: boolean;
 }
 
+// Header Component
 export default function Header({ title, showCancel = true }: HeaderProps) {
+  // Navigation
   const navigation = useNavigation();
 
+  // Navigation to the Home Page
   function handleGoBackToHomePage() {
     navigation.navigate("OrphanagesMap");
   }

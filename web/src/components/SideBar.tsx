@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import "../styles/components/side-bar.css";
 
+// Left Bar Component
 export default function SideBar() {
   const { goBack } = useHistory();
   return (

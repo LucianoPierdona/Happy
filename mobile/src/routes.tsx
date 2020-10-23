@@ -9,6 +9,7 @@ import SelectMapPosition from "./pages/SelectMapPosition";
 
 const { Navigator, Screen } = createStackNavigator();
 
+// Routes for the mobile application
 export default function Routes() {
   return (
     <NavigationContainer>

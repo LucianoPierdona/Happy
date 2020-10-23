@@ -6,6 +6,7 @@ import path from "path";
 import cors from "cors";
 import errorHandler from "./errors/handler";
 
+// Basic Setup
 const app = express();
 const port = 3333;
 

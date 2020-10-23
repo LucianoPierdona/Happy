@@ -9,17 +9,19 @@ import {
   Linking,
 } from "react-native";
 import MapView, { Marker } from "react-native-maps";
-import { Feather, FontAwesome } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
 
 import mapMarkerImg from "../images/Logo.png";
-import { RectButton, TouchableOpacity } from "react-native-gesture-handler";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useRoute } from "@react-navigation/native";
 import api from "../services/api";
 
+// Props for the params
 interface OrphanageDetailsRoute {
   id: number;
 }
 
+// Props for the orphanage
 interface OrphanageDetail {
   id: number;
   name: string;
@@ -36,11 +38,15 @@ interface OrphanageDetail {
   }[];
 }
 
+// See all the details of a specified Orphanage
 export default function OrphanageDetails() {
+  // Routing and Params
   const route = useRoute();
   const params = route.params as OrphanageDetailsRoute;
+  // Initial State
   const [orphanage, setOrphanage] = useState<OrphanageDetail>();
 
+  // Take the data from the backend
   useEffect(() => {
     api.get(`orphanages/${params.id}`).then((res) => {
       setOrphanage(res.data);
@@ -55,6 +61,7 @@ export default function OrphanageDetails() {
     );
   }
 
+  // move the user to the google maps app
   function handleOpenGoogleMaps() {
     Linking.openURL(
       `http://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`

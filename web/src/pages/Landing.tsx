@@ -4,6 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 import logoImg from "../assets/Logo.svg";
 import { Link } from "react-router-dom";
 
+// Initial Page
 const Landing = () => {
   return (
     <div id="page-landing">

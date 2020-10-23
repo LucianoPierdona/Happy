@@ -1,10 +1,12 @@
 import { ErrorRequestHandler } from "express";
 import { ValidationError } from "yup";
 
+// Handle Valdation Errors Props
 interface ValidationErrors {
   [key: string]: string[];
 }
 
+// Error Handler
 const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
   if (error instanceof ValidationError) {
     let errors: ValidationErrors = {};

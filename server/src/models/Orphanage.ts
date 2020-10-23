@@ -7,6 +7,7 @@ import {
 } from "typeorm";
 import Image from "./Image";
 
+// Orphanage Entity
 @Entity("orphanages")
 export default class Orphanage {
   @PrimaryGeneratedColumn()

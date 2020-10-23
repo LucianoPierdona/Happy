@@ -10,10 +10,13 @@ import { mapIcon } from "../utils/mapIcon";
 import api from "../services/api";
 import { useHistory } from "react-router-dom";
 
+// Create Orphanage page
 export default function CreateOrphanage() {
   const history = useHistory();
+  // Initial Map Position
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
+  // Form Data
   const [name, setName] = useState("");
   const [about, setAbout] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -22,6 +25,7 @@ export default function CreateOrphanage() {
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
 
+  // set the location when users click on the map
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
     setPosition({
@@ -30,6 +34,7 @@ export default function CreateOrphanage() {
     });
   }
 
+  // add the selected images to the array to save when the form is submitted
   function handleSelectImages(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) {
       return;
@@ -46,6 +51,7 @@ export default function CreateOrphanage() {
     setPreviewImages(selectedImagesPreview);
   }
 
+  // Send the data to the database
   async function handleSubmit(event: FormEvent) {
     event.preventDefault();
     console.log(event);
